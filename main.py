@@ -18,9 +18,10 @@ coords_array = np.empty([100,3])
 
 for a in range(4) :
     coords = defsphere.sphere(dtf, a)
-    coords_dt = pd.DataFrame(row = a, data = coords)
+    coords_a = np.asarray(coords)
+    #coords_dt = pd.DataFrame(row = a, data = coords)
     #coords_array = np.concatenate((coords, coords), axis=None)
-print(coords_dt) #array)
+print(coords_a) #array)
 
   #coords_dt = pd.DataFrame(row = a, data = coords)
  #coords_array [x] = coords
