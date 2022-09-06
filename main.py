@@ -16,12 +16,13 @@ print(o)
 
 coords_array = np.empty([100,3])
 
-for x in range(4) :
-    coords = defsphere.sphere(dtf, x)
-    coords_array = np.concatenate((coords, coords), axis=None)
-print(coords_array)
+for a in range(4) :
+    coords = defsphere.sphere(dtf, a)
+    coords_dt = pd.DataFrame(row = a, data = coords)
+    #coords_array = np.concatenate((coords, coords), axis=None)
+print(coords_dt) #array)
 
-
+  #coords_dt = pd.DataFrame(row = a, data = coords)
  #coords_array [x] = coords
 #print(coords_array)
 
