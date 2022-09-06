@@ -1,0 +1,74 @@
+import numpy as np
+import pandas as pd
+from Bio.PDB import PDBParser
+import math 
+import matplotlib.pyplot as pp
+
+data = { "residues":[], "x":[], "y":[], "z":[], "element":[] }
+p = PDBParser()
+s = p.get_structure("1bjj", "1bjj.pdb")  
+o = 0
+num_atom = []   
+residues = []
+x = []
+y = []
+z = []
+elements = []
+for chains in s:
+        for chain in chains:
+            for residue in chain:                    
+                for atom in residue:
+                    num_atom.append(o)
+                    residues.append( int(atom.get_full_id()[3][1]))
+                    x.append(atom.get_vector()[0])
+                    y.append(atom.get_vector()[1])
+                    z.append(atom.get_vector()[2])
+                    elements.append(atom.get_name()[0:1])
+                    o += 1
+data["num_atom"] = num_atom
+data["num_atom"] = num_atom
+data["residues"] = residues
+data["x"] = x 
+data["y"] = y 
+data["z"] = z
+data["element"] = elements
+data_df = pd.DataFrame(data) 
+print(data_df)
+
+######
+
+rayon_Vdw_s = {"C": 2.3, "O":2.12,"N":2.15,"S":2.4,"CU":2.0,"CL":2.1}
+
+def sphere (num_atome, samples =100): 
+    global rayon_Vdw_s
+    center = data_df.loc[num_atome, ["x", "y", "z"]]
+    element = str(data_df.loc[num_atome, ["element"]].to_string())
+    element = element [-1]
+    element
+    rayon_sphere = rayon_Vdw_s [element]
+
+    phi = math.pi * (3 - math.sqrt(5)) #golden angle 
+    i = np.arange(samples) 
+    y = 1 - (i / float(samples - 1)) * 2 #z axis 
+    r = np.sqrt(1 - y*y) #cercle radius
+    theta = phi * i #golden angle increment 
+ 
+    y = np.add(y * rayon_sphere, center[1])
+    x = np.add(r * np.cos(theta) * rayon_sphere, center[0])
+    z = np.add(r * np.sin(theta) * rayon_sphere, center[2])
+
+    points = np.zeros((samples, 3)) #n arrays containing zeros
+    points[:, 0] = x
+    points[:, 1] = y
+    points[:, 2] = z
+
+    points_coordinates = pd.DataFrame(columns = ["x", "y", "z"], data = points)
+    pp.figure().add_subplot(projection="3d").scatter(x, y, z)
+
+    print(np.max(points_coordinates["x"]) - np.min(points_coordinates["x"]))
+    print(np.max(points_coordinates["y"]) - np.min(points_coordinates["y"]))
+    print(np.max(points_coordinates["z"]) - np.min(points_coordinates["z"]))
+
+    return points_coordinates, pp.show()
+
+sphere(5)
