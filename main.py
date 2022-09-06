@@ -14,12 +14,14 @@ print(o)
 
 
 
-coords_array = np.empty(1)
+coords_array = np.empty([100,3])
 
-for x in range(1) :
+for x in range(4) :
     coords = defsphere.sphere(dtf, x)
-    coords_arrays = np.stack((coords_array, coords), axis=-1)
-    print(coords) #_array)
+    coords_array = np.concatenate((coords, coords), axis=None)
+print(coords_array)
 
 
+ #coords_array [x] = coords
+#print(coords_array)
 
