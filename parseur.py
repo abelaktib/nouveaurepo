@@ -14,6 +14,7 @@ def parse(fichier):
     y = []
     z = []
     elements = []
+    aa = []
     for chains in s:
         for chain in chains:
             for residue in chain:
@@ -24,6 +25,7 @@ def parse(fichier):
                     y.append(atom.get_vector()[1])
                     z.append(atom.get_vector()[2])
                     elements.append(atom.get_name()[0:1])
+                    aa.append(str(atom.get_parent())[8:12])
                     o += 1
     data["num_atom"] = num_atom
     data["residues"] = residues
@@ -31,6 +33,7 @@ def parse(fichier):
     data["y"] = y
     data["z"] = z
     data["element"] = elements
+    data ["aa"] = aa
     data_df = pd.DataFrame(data)
     return data_df, o
 

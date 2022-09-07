@@ -4,11 +4,12 @@ from Bio.PDB import PDBParser
 import math
 import matplotlib.pyplot as pp
 
-rayon_Vdw_s = {"C": 2.3, "O": 2.12, "N": 2.15, "S": 2.4, "CU": 2.0, "CL": 2.1}
+rayon_Vdw_s = {"C": 3.1, "O": 2.92, "N": 2.95, "S": 3.2, "CU": 2.8, "CL": 2.9}
 
-def sphere(data_df, num_atome, samples=100):
+def sphere(data_df, num_atome, samples=92):
     center = data_df.loc[num_atome, ["x", "y", "z"]]
     element = data_df.loc[num_atome, "element"]
+    residues = data_df.loc[num_atome, "residues"]
     rayon_sphere = rayon_Vdw_s[element]
     points = []
     phi = math.pi * (3 - math.sqrt(5))  # golden angle
@@ -24,6 +25,11 @@ def sphere(data_df, num_atome, samples=100):
         z = r * np.sin(theta) * rayon_sphere + center[2]
 
         points.append((x,y,z))
+    center = (center[0],center[1],center[2])
+    points.append(center)
+    rayon_sphere = (rayon_sphere,rayon_sphere)
+    points.append((rayon_sphere))
+    points.append((residues))
         #points_array = np.array(points)
     
     # points[:, 0] = x
@@ -34,3 +40,6 @@ def sphere(data_df, num_atome, samples=100):
     # pp.figure().add_subplot(projection="3d").scatter(x, y, z)
 
     return points #_array # points_coordinates, #pp.show()
+
+
+
