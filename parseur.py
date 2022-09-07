@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from Bio.PDB import PDBParser
-
+import obj
 
 def parse(fichier):
     data = {"residues": [], "x": [], "y": [], "z": [], "element": []}
@@ -26,16 +26,25 @@ def parse(fichier):
                     z.append(atom.get_vector()[2])
                     elements.append(atom.get_name()[0:1])
                     aa.append(str(atom.get_parent())[8:12])
-                    o += 1
+                    o += 1    
+                        
     data["num_atom"] = num_atom
     data["residues"] = residues
     data["x"] = x
     data["y"] = y
     data["z"] = z
     data["element"] = elements
-    data ["aa"] = aa
+    data["aa"] = aa
+
+    ma_liste = [obj.Chien()for i in o:]
+    ma_liste[i].set
+    
     data_df = pd.DataFrame(data)
-    return data_df, o
+
+
+    
+    return  data_df, o
 
 
 parse("1bjj.pdb")
+
