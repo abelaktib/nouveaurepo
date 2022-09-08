@@ -7,6 +7,7 @@ class Chien:
         self.set_y(z)
         self.set_elements(elements)
         self.set_aa(aa)
+        print("tessssst")
 
     def get_num_atom(self):
         return self.__num_atom
