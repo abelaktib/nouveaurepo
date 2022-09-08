@@ -7,56 +7,64 @@ import numpy as np
 import pandas as pd
 
 
-dtf, o = parseur.parse("1bja.pdb")
-print(dtf)
+atom_list, o = parseur.parse("1bja.pdb")
 
 
-coords_a = []
 for a in range(o):
-    coords = defsphere.sphere(dtf, a)
-    coords_a.append(coords)
+    atom_list = defsphere.sphere(atom_list, a)
 
-# print(coords_a[1][101][1])
-# print(coords_a[1][100][101]) #coords_a[sphere] il existe 1 sphere par atome
-    # coords_a[sphere] [point d une sphere] il en existe 100 le 100eme est le centre de la sphere le 101 est le rayon
-    # coords_a[sphere] [point d une sphere] [1,2,2] coordonnées d un points x y z
-    # coords_a[sphere][101][1] rayon de la sphere924
+    # coords_a.append(coords)
 
-surface_noncontact = 0
-surface_total = 0
+# surface_noncontact = 0
+# surface_total = 0
 
 point_total_list = []
 point_noncontact_list = []
 
 
-for atom_un in coords_a:
+for atom_un in atom_list:
     point_noncontact = 0
     point_total = 0
-
-    for atom_deux in coords_a:
+    for atom_deux in atom_list:
         if atom_un != atom_deux:
-            atom_un_centre = atom_un[92]
-            atom_deux_centre = atom_deux[92]
+            atom_un_centre = atom_un.get_center()
+            atom_deux_centre = atom_deux.get_center()
             distance_centre = math.dist(atom_un_centre, atom_deux_centre)
             if distance_centre < 10:
-                for point_sphere in atom_un[0:92]:
-                    distance_sphere_centre = math.dist(
-                        point_sphere, atom_deux_centre)
-                    # rayon_atom_un_ss = rayon atom 1 sans sonde
-                    rayon_atom_un_ss = float(atom_un[93][1] - 1.4)
-                    if distance_sphere_centre > rayon_atom_un_ss:
+                for point_sphere in atom_un.get_point_sphere():
+                    distance_sphere_centre = math.dist(point_sphere, atom_deux_centre)
+                    rayon_atom_deux_ss = float(atom_deux.get_rayon_sphere())
+                    if distance_sphere_centre < rayon_atom_deux_ss:
                         point_noncontact += 1
                         point_total += 1
                     else:
                         point_total += 1
-    point_total_list.append(point_total)
-    point_noncontact_list.append(point_noncontact)
 
-print(point_total_list)
-print(point_noncontact_list)
+    atom_un.set_point_total(point_total)
+    atom_un.set_point_noncontact(point_noncontact)
+    # print(atom_un.get_point_total(),)
+    # print(atom_un.get_point_noncontact())
 
 
+surface_residu_noncontact = {}
+surface_residu_total = {}
 
+for atom_un in atom_list:
+  atom_un.set_surface_total()
+  atom_un.set_surface_noncontact()
+  # print(atom_un.get_surface_total())
+
+  if (atom_un.get_residues(), atom_un.get_aa()) in surface_residu_noncontact:
+    surface_residu_noncontact[(atom_un.get_residues(), atom_un.get_aa())] += atom_un.get_surface_noncontact()
+  else:
+      surface_residu_noncontact[(atom_un.get_residues(), atom_un.get_aa())] = atom_un.get_surface_noncontact()
+
+#   if (atom_un.get_residues(), atom_un.get_aa()) in surface_residu_total:
+#     surface_residu_total[(atom_un.get_residues(),atom_un.get_aa())] += atom_un.get_surface_total()
+#   else:
+#       surface_residu_total[(atom_un.get_residues(), atom_un.get_aa())] = atom_un.get_surface_total()
+
+print(sum(surface_residu_noncontact.values()))    #ASA abs
 
 # point_contact = point_total - point_noncontact
 
