@@ -6,7 +6,7 @@ import matplotlib.pyplot as pp
 from objr import Chien
 
 
-rayon_Vdw_s = {"C": 3.1, "O": 2.8, "N": 2.9, "S": 3.25, "CU": 2.8, "CL": 2.9 , "H": 2.5}
+rayon_Vdw_s = {"C": 3.1, "O": 2.8, "N": 2.9, "S": 3.25, "CU": 2.8, "CL": 2.9 , "H": 2.5, "P": 3.2}
 
 
 def sphere(atom_list, num_atom, samples=92):
@@ -18,7 +18,6 @@ def sphere(atom_list, num_atom, samples=92):
     phi = math.pi * (3 - math.sqrt(5))  # golden angle
     atom_list[num_atom].set_center(center)
     for i in range(samples):
-        #i = np.arange(samples)
         y = 1 - (i / float(samples - 1)) * 2  # y axis
         r = np.sqrt(1 - y*y)  # cercle radius
         theta = phi * i  # golden angle increment
@@ -37,7 +36,7 @@ def sphere(atom_list, num_atom, samples=92):
 
 
     # # _array # points_coordinates, #pp.show()
-
+        #i = np.arange(samples)
 
 
     # center = data_df.loc[num_atome, ["x", "y", "z"]]

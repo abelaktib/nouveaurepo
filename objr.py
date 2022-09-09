@@ -1,6 +1,6 @@
 import math
 class Chien:
-    def __init__(self, num_atom=None, residues=None, x=None, y=None, z=None, elements=None, aa=None, rayon_sphere=None, point_sphere=None, center=None,point_total = None, point_noncontact = None, surface_total= None, surface_noncontact=None):
+    def __init__(self, num_atom=None, residues=None, x=None, y=None, z=None, elements=None, aa=None, rayon_sphere=None, point_sphere=None, center=None,point_total = None, point_noncontact = None, surface_atome= None, surface_noncontact=None,list_nc=None):
         self.__num_atom = num_atom
         self.__residues = residues
         self.__x = x
@@ -13,8 +13,9 @@ class Chien:
         self.__center = center
         self.__point_noncontact =  point_noncontact
         self.__point_total = point_total
-        self.__surface_total = surface_total
+        self.__surface_atome = surface_atome
         self.__surface_noncontact = surface_noncontact
+        self.__list_nc = list_nc
 
     def get_num_atom(self):
         return self.__num_atom
@@ -82,23 +83,29 @@ class Chien:
     def set_point_noncontact(self, point_noncontact):
         self.__point_noncontact = point_noncontact
 
+    def get_list_nc(self):
+        return self.__list_nc
+
+    def set_list_nc(self):
+        self.__list_nc = [0]*92
+
     def get_point_total(self):
         return self.__point_total
 
     def set_point_total(self, point_total):
         self.__point_total = point_total
 
-    def get_surface_total(self):
-        return self.__surface_total
+    def get_surface_atome(self):
+        return self.__surface_atome
 
-    def set_surface_total(self):
-        self.__surface_total = 4 * math.pi * (self.__rayon_sphere)**2
+    def set_surface_atome(self):
+        self.__surface_atome = (4 * math.pi * (self.__rayon_sphere)**2)
 
     def get_surface_noncontact(self):
         return self.__surface_noncontact
 
     def set_surface_noncontact(self):
-        self.__surface_noncontact = (self.__surface_total * self.__point_noncontact)/self.__point_total
+        self.__surface_noncontact = (self.__surface_atome * self.__point_noncontact)/self.__point_total
 
     def __str__(self):
         return "[ " + str(self.__num_atom) + "]"
