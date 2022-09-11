@@ -1,21 +1,59 @@
 import math
-class Chien:
+
+class obj_atom:
+    '''The class obj_atom takes all the elements obtained from the .pdb 
+file as well as new attributes allowing the calculation of the 
+accessibility of the solvent
+...
+Attributes
+    ----------
+    num_atom : int
+        id atom     
+    residues : int
+        id residu
+    x : float
+        x position of atom
+    y : float
+        y position of atom
+    z : float
+        z position of atom
+    elements : str 
+        chemstry element name
+    aa : str
+        residue name 
+    rayon_sphere : float
+        radius of the sphere
+    point_sphere : list of tuple
+        (x,y,z) of each point of the sphere
+    center : tuple
+        (x,y,z) of the center of the sphere
+    point_noncontact : int
+        number of point exposed
+    point_total : int
+        total point on sphere
+    surface_atome: float
+        surface of sphere of the atom 
+    surface_noncontact : float
+    surface of the sphere accessible to solvant
+    list_nc : list of boolean
+        flag for each point of sphere accessible or not
+'''
     def __init__(self, num_atom=None, residues=None, x=None, y=None, z=None, elements=None, aa=None, rayon_sphere=None, point_sphere=None, center=None,point_total = None, point_noncontact = None, surface_atome= None, surface_noncontact=None,list_nc=None):
-        self.__num_atom = num_atom
-        self.__residues = residues
-        self.__x = x
-        self.__y = y
-        self.__z = z
-        self.__elements = elements
-        self.__aa = aa
-        self.__rayon_sphere = rayon_sphere
-        self.__point_sphere = point_sphere
-        self.__center = center
-        self.__point_noncontact =  point_noncontact
-        self.__point_total = point_total
-        self.__surface_atome = surface_atome
-        self.__surface_noncontact = surface_noncontact
-        self.__list_nc = list_nc
+        self.__num_atom = num_atom # id atom
+        self.__residues = residues # id residu
+        self.__x = x # x position of atom
+        self.__y = y # y position of atom
+        self.__z = z  # z position of atom
+        self.__elements = elements # the chemstry element name
+        self.__aa = aa # residue name 
+        self.__rayon_sphere = rayon_sphere # radius of the sphere
+        self.__point_sphere = point_sphere # x,y,z of each point of the sphere
+        self.__center = center # x,y,z of the center of the sphere
+        self.__point_noncontact =  point_noncontact # number of point exposed
+        self.__point_total = point_total # how much point of the sphere is accessible to the solvent
+        self.__surface_atome = surface_atome # surface of sphere of the atom 
+        self.__surface_noncontact = surface_noncontact # surface of the sphere accessible to solvant
+        self.__list_nc = list_nc # flag for each point of sphere accessible or not
 
     def get_num_atom(self):
         return self.__num_atom
@@ -108,4 +146,4 @@ class Chien:
         self.__surface_noncontact = (self.__surface_atome * self.__point_noncontact)/self.__point_total
 
     def __str__(self):
-        return "[ " + str(self.__num_atom) + "]"
+        return "[ " + str(self.__num_atom) + "]" #print an object will print his num_atom+
