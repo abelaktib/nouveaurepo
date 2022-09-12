@@ -19,14 +19,12 @@ def parse(fichier: str):
     s = p.get_structure("", fichier)
     o = 0
     atom_list = []  # list that will contain all the objects created
-    for chains in s:  # This loop allows to browse the lines of our .pdb
-        for chain in chains:
-            for residue in chain:
-                # Take only line starting with ATOM on pdb file
-                if residue.get_full_id()[3][0] == " ":
-                    for atom in residue:
-                        atom_list.append(obj_atom(o, int(atom.get_full_id()[3][1]), atom.get_vector()[0], atom.get_vector()[
-                            1], atom.get_vector()[2], atom.get_name()[0:1], str(atom.get_parent())[9:12]))
+    for chains in s[0]:  # This loop allows to browse the lines of our .pdb
+        for residue in chains: # Take only line starting with ATOM on pdb file
+            if residue.get_full_id()[3][0] == " ":
+                for atom in residue:
+                    atom_list.append(obj_atom(o, int(atom.get_full_id()[3][1]), atom.get_vector()[0], atom.get_vector()[
+                        1], atom.get_vector()[2], atom.get_name()[0:1], str(atom.get_parent())[9:12]))
 
-                        o += 1  # o is a counter of atoms
+                    o += 1  # o is a counter of atoms
     return atom_list, o
