@@ -1,0 +1,8 @@
+name: project
+channels:
+  - python
+  - defaults
+dependencies:
+  - biopython=1.78=py39h2bbff1b_0
+  - pip=21.2.4=py39haa95532_0
+  - py=1.10.0=pyhd3eb1b0_0
