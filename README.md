@@ -1,16 +1,14 @@
 # Calcul de la surface accessible au solvant d’une protéine
-## Installation
+## How to install?
 > gh repo clone abelaktib/nouveaurepo
-## A quoi ca sert ?
-    Notre programme va récupérer les atomes d'un fichier .pdb d'une proténes d'intérêt et créer des objets correspondant à chaque atomes.
-    De ces objets une sphère va être générer sous forme de coordonées point grâce à l'algorithme de fibonacci. Ensuite pour chacun de
-    ces atomes nous allons compté le nombre de point libre (exposé au solvant).
-    Le nombre de point exposés ainsi que la surface totale nous permet d'obtenir la surface exposé au solvant.
-    Plusieurs résultats sont obtenues : La surface accessible, La surface accessible relative, le poucentage d'accessibilité ainsi
-    que la surface accessible totale.
+## What is it for?
+Our program will retrieve the atoms from a .pdb file of a protein of interest and create objects corresponding to each atom.
+From these objects a sphere will be generated in the form of point coordinates using the fibonacci algorithm. Then for each of these atoms we will count the number of free points (exposed to the solvent).
+The number of exposed points as well as the total surface allows us to obtain the surface exposed to the solvent.
+Several results are obtained: the accessible surface, the relative accessible surface, the percentage of accessibility and the total accessible surface.
 
-## Exemple (display final)
-Les résultats obtenus sont directement affiché sur le terminale comme ceci:
+## Example (final display)
+The results obtained are directly displayed on the terminal like this:
 ![Comme ceci](results/1.png)
 ![ :](results/2.png)
 
@@ -18,11 +16,11 @@ Les résultats obtenus sont directement affiché sur le terminale comme ceci:
 ## Dependencies :
  Python et Biopython
 
-## Comment l'execute?
-Pour lancer le programme dans votre terminale executez cette commande :
+## How to execute?
+To launch the program in your terminal run this command:
 > python .\bin\main.py
 
-Le programme vous demandera alors d'entrer  l'emplacement de votre fichier. pdb
+The program will then ask you to enter the location of your file. pdb
 
 
 
