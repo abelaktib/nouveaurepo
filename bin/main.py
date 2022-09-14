@@ -43,7 +43,7 @@ create spheres centred on our atoms of interest and calculate the
     print(f"Le poucentage d'accessibilité est de: {porcent_accessibilite} ")
 
     print(f"La surface accessible au solvant est de {asa_abs_sum}Å**2")
-    print(f"La surface accessible relative au solvant est de {asa_rel_sum}Å**2")
+    print(f"La surface accessible relative au solvant est de {asa_rel_sum}%")
 
 
 if __name__ == "__main__":
