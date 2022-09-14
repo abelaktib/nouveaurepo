@@ -1,4 +1,4 @@
-# Calcul de la surface accessible au solvant d’une protéine
+# Calculation of the solvent accessible surface of a protein
 ## How to install?
 > gh repo clone abelaktib/nouveaurepo
 ## What is it for?
