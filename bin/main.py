@@ -5,6 +5,7 @@ import math
 import asa
 
 
+
 def display_asa(asa_abs: dict, asa_rel: dict):
     for key in asa_abs:
         print(
@@ -12,11 +13,13 @@ def display_asa(asa_abs: dict, asa_rel: dict):
 
 
 def main():
-    ''' This program uses 3 different functions to: parse our pdb files,
-    create spheres centred on our atoms of interest and calculate the
-      solvent accessibility'''
+    
+    print(''' This program uses 3 different functions to: parse our pdb files,
+create spheres centred on our atoms of interest and calculate the
+      solvent accessibility''')
 
-    files = str(input("Entrer  l'emplacement de votre fichier. pdb:"))
+
+    files = str(input("Enter your .pdb file path:"))
 
     # Parsing of the chosen pdb file to retrieve all atoms as objects with o the total number of atoms
     atom_list, o = parseur.parse(files)
@@ -44,3 +47,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

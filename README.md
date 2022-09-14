@@ -18,7 +18,7 @@ The results obtained are directly displayed on the terminal like this:
 
 ## How to execute?
 To launch the program in your terminal run this command:
-> python .\bin\main.py
+> python ./bin/main.py
 
 The program will then ask you to enter the location of your file. pdb
 

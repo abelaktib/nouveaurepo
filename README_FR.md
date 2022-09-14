@@ -20,7 +20,7 @@ Les résultats obtenus sont directement affiché sur le terminale comme ceci:
 
 ## Comment l'execute?
 Pour lancer le programme dans votre terminale executez cette commande :
-> python .\bin\main.py
+> python ./bin/main.py
 
 Le programme vous demandera alors d'entrer  l'emplacement de votre fichier. pdb
 
