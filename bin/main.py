@@ -30,7 +30,7 @@ create spheres centred on our atoms of interest and calculate the
 
     point_total = 92 * o  # counting the number of points in all spheres
 
-    asa_abs, asa_rel, porcent_accessibilite, asa_abs_sum = asa.asa(
+    asa_abs, asa_rel, porcent_accessibilite, asa_abs_sum,asa_rel_sum = asa.asa(
         atom_list)  # collection of accessibility results
 
     # print(f"La surface accessible au solvant par résidu est de (A**2) : {asa_abs} " )
@@ -43,6 +43,7 @@ create spheres centred on our atoms of interest and calculate the
     print(f"Le poucentage d'accessibilité est de: {porcent_accessibilite} ")
 
     print(f"La surface accessible au solvant est de {asa_abs_sum}Å**2")
+    print(f"La surface accessible relative au solvant est de {asa_rel_sum}Å**2")
 
 
 if __name__ == "__main__":

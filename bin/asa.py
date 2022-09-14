@@ -101,4 +101,4 @@ def asa(atom_list: list):
 
     asa_rel_sum = sum(asa_rel.values())
 
-    return asa_abs,asa_rel,porcent_accessibilite,asa_abs_sum
+    return asa_abs,asa_rel,porcent_accessibilite,asa_abs_sum,asa_rel_sum
