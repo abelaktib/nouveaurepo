@@ -1,6 +1,6 @@
 # Calcul de la surface accessible au solvant d’une protéine
 ## Installation
-> gh repo clone abelaktib/nouveaurepo
+> gh repo clone abelaktib/project_surface
 ## A quoi ca sert ?
     Notre programme va récupérer les atomes d'un fichier .pdb d'une proténes d'intérêt et créer des objets correspondant à chaque atomes.
     De ces objets une sphère va être générer sous forme de coordonées point grâce à l'algorithme de fibonacci. Ensuite pour chacun de

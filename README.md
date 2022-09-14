@@ -1,6 +1,6 @@
 # Calculation of the solvent accessible surface of a protein
 ## How to install?
-> gh repo clone abelaktib/nouveaurepo
+> gh repo clone abelaktib/project_surface
 ## What is it for?
 Our program will retrieve the atoms from a .pdb file of a protein of interest and create objects corresponding to each atom.
 From these objects a sphere will be generated in the form of point coordinates using the fibonacci algorithm. Then for each of these atoms we will count the number of free points (exposed to the solvent).
